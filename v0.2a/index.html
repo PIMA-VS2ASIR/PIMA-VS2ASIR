@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Explora Toledo | Rutas turísticas
+    </title>
+
+    <meta
+        name="description"
+        content="Descubre monumentos, gastronomía, ocio y rutas turísticas por Toledo."
+    >
+
+    <link
+        rel="stylesheet"
+        href="index.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <main class="toledo-routes-app">
+
+
+        <!-- =====================================================
+             CABECERA
+        ====================================================== -->
+
+        <header class="toledo-routes-header">
+
+            <h1>
+                Explora Toledo
+            </h1>
+
+            <p>
+                Descubre monumentos, gastronomía, ocio y rutas por Toledo.
+            </p>
+
+        </header>
+
+
+
+        <!-- =====================================================
+             FILTROS
+        ====================================================== -->
+
+        <section
+            class="toledo-routes-filters"
+            aria-label="Filtros del mapa"
+        >
+
+
+            <!-- CATEGORÍA -->
+
+            <div class="toledo-routes-filter-group">
+
+                <label for="toledo-routes-category-filter">
+
+                    ¿Qué quieres descubrir?
+
+                </label>
+
+
+                <select
+                    id="toledo-routes-category-filter"
+                    class="toledo-routes-select"
+                >
+
+                    <option value="todos">
+                        Todos los lugares
+                    </option>
+
+                    <option value="cultural">
+                        Cultural
+                    </option>
+
+                    <option value="gastronomico">
+                        Gastronómico
+                    </option>
+
+                    <option value="copas">
+                        Bares y copas
+                    </option>
+
+                    <option value="otros">
+                        Otros
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- RUTAS RECOMENDADAS -->
+
+            <div class="toledo-routes-filter-group">
+
+                <label for="toledo-routes-predefined-route">
+
+                    Ruta recomendada
+
+                </label>
+
+
+                <select
+                    id="toledo-routes-predefined-route"
+                    class="toledo-routes-select"
+                >
+
+                    <option value="">
+                        Selecciona una ruta
+                    </option>
+
+                    <!--
+                    Estas opciones podrán generarse
+                    posteriormente mediante JavaScript.
+
+                    Ejemplo:
+
+                    <option value="monumental">
+                        Toledo Monumental
+                    </option>
+                    -->
+
+                </select>
+
+            </div>
+
+
+
+            <!-- CONTADOR -->
+
+            <div
+                id="toledo-routes-results-count"
+                class="toledo-routes-results-count"
+                aria-live="polite"
+            >
+
+                Cargando lugares...
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             MAPA + FICHA
+        ====================================================== -->
+
+        <section class="toledo-routes-main">
+
+
+            <!-- =================================================
+                 MAPA
+            ================================================== -->
+
+            <div class="toledo-routes-map-column">
+
+
+                <div
+                    id="toledo-routes-map"
+                    class="toledo-routes-map"
+                    aria-label="Mapa turístico interactivo de Toledo"
+                >
+
+                    <!--
+                    Google Maps se insertará aquí
+                    mediante JavaScript.
+                    -->
+
+                </div>
+
+
+
+                <!-- SIN RESULTADOS -->
+
+                <div
+                    id="toledo-routes-no-results"
+                    class="toledo-routes-no-results"
+                    hidden
+                >
+
+                    No hay lugares disponibles para esta categoría.
+
+                </div>
+
+
+
+                <!-- ERRORES -->
+
+                <div
+                    id="toledo-routes-map-error"
+                    class="toledo-routes-map-error"
+                    role="alert"
+                    hidden
+                ></div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PANEL DE INFORMACIÓN
+            ================================================== -->
+
+            <aside
+                id="toledo-routes-place-panel"
+                class="toledo-routes-place-panel"
+                aria-label="Información del lugar seleccionado"
+            >
+
+
+                <!-- =============================================
+                     ESTADO INICIAL
+                ============================================== -->
+
+                <div
+                    id="toledo-routes-panel-empty"
+                    class="toledo-routes-panel-empty"
+                >
+
+                    <div
+                        class="toledo-routes-panel-icon"
+                        aria-hidden="true"
+                    >
+                        📍
+                    </div>
+
+                    <h2>
+                        Selecciona un lugar
+                    </h2>
+
+                    <p>
+                        Pulsa sobre cualquiera de los marcadores del mapa
+                        para consultar toda su información.
+                    </p>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     FICHA DEL LUGAR
+                ============================================== -->
+
+                <article
+                    id="toledo-routes-panel-content"
+                    class="toledo-routes-panel-content"
+                    hidden
+                >
+
+
+                    <!-- IMAGEN -->
+
+                    <div
+                        id="toledo-routes-place-image-container"
+                        class="toledo-routes-place-image-container"
+                        hidden
+                    >
+
+                        <img
+                            id="toledo-routes-place-image"
+                            class="toledo-routes-place-image"
+                            src=""
+                            alt=""
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+
+                    <!-- CATEGORÍA -->
+
+                    <div
+                        id="toledo-routes-place-category"
+                        class="toledo-routes-place-category"
+                    >
+                    </div>
+
+
+
+                    <!-- NOMBRE -->
+
+                    <h2
+                        id="toledo-routes-place-name"
+                        class="toledo-routes-place-name"
+                    >
+                    </h2>
+
+
+
+                    <!-- DESCRIPCIÓN -->
+
+                    <p
+                        id="toledo-routes-place-description"
+                        class="toledo-routes-place-description"
+                    >
+                    </p>
+
+
+
+                    <!-- =========================================
+                         INFORMACIÓN
+                         BOTONES
+                    ========================================== -->
+
+                    <div class="toledo-routes-place-actions">
+
+
+                        <a
+                            id="toledo-routes-place-website"
+                            class="toledo-routes-button toledo-routes-button-secondary"
+                            href="#"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+
+                            Visitar web
+
+                        </a>
+
+
+                        <button
+                            id="toledo-routes-add-route"
+                            class="toledo-routes-button toledo-routes-button-primary"
+                            type="button"
+                        >
+
+                            + Añadir a mi ruta
+
+                        </button>
+
+
+                    </div>
+
+
+                </article>
+
+
+            </aside>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             MI RUTA
+        ====================================================== -->
+
+        <section
+            id="toledo-routes-builder"
+            class="toledo-routes-builder"
+            aria-labelledby="toledo-routes-builder-title"
+        >
+
+
+            <!-- CABECERA -->
+
+            <div class="toledo-routes-builder-header">
+
+
+                <div>
+
+                    <h2 id="toledo-routes-builder-title">
+
+                        Mi ruta
+
+                    </h2>
+
+                    <p>
+                        Añade varios lugares y ordénalos
+                        como quieras visitarlos.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="toledo-routes-clear-route"
+                    class="toledo-routes-clear-route"
+                    type="button"
+                    disabled
+                >
+
+                    Vaciar ruta
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SIN LUGARES
+            ================================================== -->
+
+            <div
+                id="toledo-routes-route-empty"
+                class="toledo-routes-route-empty"
+            >
+
+                Todavía no has añadido ningún lugar.
+
+            </div>
+
+
+
+            <!-- =================================================
+                 LISTA DINÁMICA
+            ================================================== -->
+
+            <ol
+                id="toledo-routes-route-list"
+                class="toledo-routes-route-list"
+                aria-label="Lugares seleccionados para la ruta"
+            >
+
+                <!--
+                Los lugares seleccionados
+                se crearán mediante JavaScript.
+
+                Ejemplo conceptual:
+
+                <li>
+                    1. Catedral de Toledo
+                </li>
+                -->
+
+            </ol>
+
+
+
+            <!-- CONTADOR -->
+
+            <div
+                id="toledo-routes-route-summary"
+                class="toledo-routes-route-summary"
+                aria-live="polite"
+            >
+
+                0 lugares seleccionados
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TRANSPORTE
+            ================================================== -->
+
+            <div class="toledo-routes-transport">
+
+                <h3>
+                    ¿Cómo quieres desplazarte?
+                </h3>
+            ================================================== -->
+
+            <button
+                id="toledo-routes-calculate-route"
+                class="toledo-routes-calculate-route"
+                type="button"
+                disabled
+            >
+
+                Calcular ruta
+
+            </button>
+
+
+
+            <!-- ESTADO -->
+
+            <div
+                id="toledo-routes-route-status"
+                class="toledo-routes-route-status"
+                aria-live="polite"
+            >
+            </div>
+
+
+
+            <!-- =================================================
+                 RESULTADOS
+            ================================================== -->
+
+            <section
+                id="toledo-routes-route-results"
+                class="toledo-routes-route-results"
+                hidden
+            >
+
+
+                <!-- =============================================
+                     RESUMEN
+                ============================================== -->
+
+                <div class="toledo-routes-route-total">
+
+                    <h3>
+                        Resumen de la ruta
+                    </h3>
+
+
+                    <div class="toledo-routes-route-stats">
+
+
+                        <!-- DISTANCIA -->
+
+                        <div class="toledo-routes-route-stat">
+
+                            <span class="toledo-routes-route-stat-label">
+
+                                Distancia total
+
+                            </span>
+
+                            <strong
+                                id="toledo-routes-total-distance"
+                                class="toledo-routes-route-stat-value"
+                            >
+
+                                -
+
+                            </strong>
+
+                        </div>
+
+
+
+                        <!-- DURACIÓN -->
+
+                        <div class="toledo-routes-route-stat">
+
+                            <span class="toledo-routes-route-stat-label">
+
+                                Tiempo estimado
+
+                            </span>
+
+                            <strong
+                                id="toledo-routes-total-duration"
+                                class="toledo-routes-route-stat-value"
+                            >
+
+                                -
+
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =============================================
+                     RECORRIDO
+                ============================================== -->
+
+                <div class="toledo-routes-route-breakdown">
+
+                    <h3>
+                        Recorrido
+                    </h3>
+
+
+                    <div
+                        id="toledo-routes-route-legs"
+                        class="toledo-routes-route-legs"
+                    >
+
+                        <!--
+                        Los tramos se generan
+                        mediante JavaScript.
+
+                        Ejemplo:
+
+                        Catedral → Alcázar
+                        650 m · 9 min
+                        -->
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT DE LA APLICACIÓN
+    ====================================================== -->
+
+    <script src="map.js"></script>
+
+
+    <!--
+    GOOGLE MAPS SE AÑADIRÁ AQUÍ POSTERIORMENTE.
+
+    Ejemplo:
+
+    <script
+        async
+        src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initToledoRoutesMap"
+    ></script>
+
+    No pongas todavía una API key real si vas a compartir
+    públicamente este archivo.
+    -->
+
+
+</body>
+
+</html>

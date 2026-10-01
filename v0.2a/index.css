@@ -1,0 +1,1761 @@
+/*
+|--------------------------------------------------------------------------
+| TOLEDO ROUTES
+| CSS FINAL
+|--------------------------------------------------------------------------
+*/
+
+
+/*
+|--------------------------------------------------------------------------
+| VARIABLES
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-app {
+
+    --tr-background: #ffffff;
+    --tr-background-soft: #f7f7f7;
+
+    --tr-text: #111111;
+    --tr-text-soft: #666666;
+
+    --tr-border: #e2e2e2;
+    --tr-border-dark: #cccccc;
+
+    --tr-primary: #111111;
+    --tr-primary-text: #ffffff;
+
+    --tr-danger: #d63638;
+
+    --tr-radius-small: 8px;
+    --tr-radius: 12px;
+
+    --tr-shadow:
+        0 4px 18px
+        rgba(0, 0, 0, 0.07);
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| RESET INTERNO
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-app *,
+.toledo-routes-app *::before,
+.toledo-routes-app *::after {
+
+    box-sizing: border-box;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| APLICACIÓN
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-app {
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    color: var(--tr-text);
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| CABECERA
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-header {
+
+    margin-bottom: 24px;
+
+}
+
+
+.toledo-routes-header h2 {
+
+    margin: 0 0 8px;
+
+    font-size: 34px;
+
+    line-height: 1.15;
+
+}
+
+
+.toledo-routes-header p {
+
+    margin: 0;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+
+    color: var(--tr-text-soft);
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| FILTROS
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-filters {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+
+    padding: 20px;
+
+    background: var(--tr-background);
+
+    border: 1px solid var(--tr-border);
+
+    border-radius: var(--tr-radius);
+
+    box-shadow:
+        0 2px 8px
+        rgba(0, 0, 0, 0.04);
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| GRUPOS DE FILTRO
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-filter-group {
+
+    display: flex;
+
+    flex: 1 1 260px;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    width: 100%;
+
+    max-width: 350px;
+
+}
+
+
+.toledo-routes-filter-group label {
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| SELECT
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-select {
+
+    width: 100%;
+
+    min-height: 48px;
+
+    padding: 10px 14px;
+
+    color: var(--tr-text);
+
+    background: var(--tr-background);
+
+    border: 1px solid var(--tr-border-dark);
+
+    border-radius: var(--tr-radius-small);
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+
+}
+
+
+.toledo-routes-select:hover {
+
+    border-color: #888888;
+
+}
+
+
+.toledo-routes-select:focus {
+
+    outline: none;
+
+    border-color: var(--tr-primary);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(0, 0, 0, 0.08);
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| CONTADOR
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-results-count {
+
+    flex: 0 0 auto;
+
+    padding-bottom: 12px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| MAPA + PANEL
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-main {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 2fr)
+        minmax(320px, 1fr);
+
+    gap: 20px;
+
+    align-items: stretch;
+
+}
+
+
+.toledo-routes-map-column {
+
+    min-width: 0;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| MAPA
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-map {
+
+    width: 100%;
+
+    height: 650px;
+
+    min-height: 500px;
+
+    overflow: hidden;
+
+    background: #e5e5e5;
+
+    border-radius: var(--tr-radius);
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| PANEL LATERAL
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-place-panel {
+
+    height: 650px;
+
+    overflow-y: auto;
+
+    background: var(--tr-background);
+
+    border: 1px solid var(--tr-border);
+
+    border-radius: var(--tr-radius);
+
+    box-shadow: var(--tr-shadow);
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| PANEL VACÍO
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-panel-empty {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 100%;
+
+    padding: 40px;
+
+    text-align: center;
+
+}
+
+
+.toledo-routes-panel-icon {
+
+    margin-bottom: 16px;
+
+    font-size: 44px;
+
+}
+
+
+.toledo-routes-panel-empty h3 {
+
+    margin: 0 0 10px;
+
+    font-size: 22px;
+
+}
+
+
+.toledo-routes-panel-empty p {
+
+    max-width: 300px;
+
+    margin: 0;
+
+    color: var(--tr-text-soft);
+
+    line-height: 1.6;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| CONTENIDO DEL PANEL
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-panel-content {
+
+    padding-bottom: 24px;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| IMAGEN DEL LUGAR
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-place-image-container {
+
+    width: 100%;
+
+    height: 240px;
+
+    overflow: hidden;
+
+    background: #eeeeee;
+
+}
+
+
+.toledo-routes-place-image {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| CATEGORÍA
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-place-category {
+
+    display: inline-flex;
+
+    margin:
+        24px
+        24px
+        8px;
+
+    padding:
+        6px
+        10px;
+
+    background: #eeeeee;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| NOMBRE DEL LUGAR
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-place-name {
+
+    margin:
+        4px
+        24px
+        14px;
+
+    font-size: 27px;
+
+    line-height: 1.2;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| DESCRIPCIÓN
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-place-description {
+
+    margin:
+        0
+        24px
+        24px;
+
+    color: #333333;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| DATOS DEL LUGAR
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-place-details {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+
+    margin:
+        0
+        24px
+        24px;
+
+    padding:
+        20px
+        0;
+
+    border-top: 1px solid #eeeeee;
+
+    border-bottom: 1px solid #eeeeee;
+
+}
+
+
+.toledo-routes-detail-row {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+}
+
+
+.toledo-routes-detail-icon {
+
+    flex: 0 0 auto;
+
+    font-size: 18px;
+
+}
+
+
+.toledo-routes-detail-row div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+
+.toledo-routes-detail-row strong {
+
+    font-size: 13px;
+
+}
+
+
+.toledo-routes-detail-row span,
+.toledo-routes-detail-row a {
+
+    color: var(--tr-text);
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| ACCIONES DEL LUGAR
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-place-actions {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    padding:
+        0
+        24px;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| BOTONES GENERALES
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100%;
+
+    min-height: 48px;
+
+    padding:
+        12px
+        18px;
+
+    border-radius: var(--tr-radius-small);
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        opacity 0.15s ease,
+        background 0.15s ease;
+
+}
+
+
+.toledo-routes-button:hover:not(:disabled) {
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.toledo-routes-button-primary {
+
+    color: var(--tr-primary-text);
+
+    background: var(--tr-primary);
+
+    border: 1px solid var(--tr-primary);
+
+}
+
+
+.toledo-routes-button-secondary {
+
+    color: var(--tr-text);
+
+    background: var(--tr-background);
+
+    border: 1px solid var(--tr-border-dark);
+
+}
+
+
+.toledo-routes-button.is-added,
+.toledo-routes-button:disabled {
+
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| SIN RESULTADOS
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-no-results {
+
+    margin-top: 15px;
+
+    padding: 16px;
+
+    background: var(--tr-background-soft);
+
+    border: 1px solid var(--tr-border);
+
+    border-radius: var(--tr-radius-small);
+
+    text-align: center;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| ERRORES
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-map-error,
+.toledo-routes-error {
+
+    margin-top: 20px;
+
+    padding: 15px 18px;
+
+    color: var(--tr-danger);
+
+    background: #ffffff;
+
+    border: 1px solid var(--tr-danger);
+
+    border-radius: var(--tr-radius-small);
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| CONSTRUCTOR DE RUTA
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-builder {
+
+    margin-top: 28px;
+
+    padding: 24px;
+
+    background: var(--tr-background);
+
+    border: 1px solid var(--tr-border);
+
+    border-radius: var(--tr-radius);
+
+    box-shadow: var(--tr-shadow);
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| CABECERA "MI RUTA"
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-builder-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 22px;
+
+}
+
+
+.toledo-routes-builder-header h3 {
+
+    margin: 0 0 5px;
+
+    font-size: 25px;
+
+}
+
+
+.toledo-routes-builder-header p {
+
+    margin: 0;
+
+    color: var(--tr-text-soft);
+
+    font-size: 14px;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| VACIAR RUTA
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-clear-route {
+
+    flex: 0 0 auto;
+
+    min-height: 42px;
+
+    padding:
+        8px
+        16px;
+
+    color: var(--tr-text);
+
+    background: #ffffff;
+
+    border: 1px solid var(--tr-border-dark);
+
+    border-radius: var(--tr-radius-small);
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+.toledo-routes-clear-route:hover:not(:disabled) {
+
+    border-color: #777777;
+
+}
+
+
+.toledo-routes-clear-route:disabled {
+
+    opacity: 0.4;
+
+    cursor: not-allowed;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| RUTA VACÍA
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-route-empty {
+
+    padding:
+        30px
+        20px;
+
+    color: var(--tr-text-soft);
+
+    background: var(--tr-background-soft);
+
+    border: 1px dashed var(--tr-border-dark);
+
+    border-radius: var(--tr-radius-small);
+
+    text-align: center;
+
+    font-size: 14px;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| LISTA DE LA RUTA
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-route-list {
+
+    display: none;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| ELEMENTO DE LA RUTA
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-route-item {
+
+    display: grid;
+
+    grid-template-columns:
+        30px
+        36px
+        minmax(0, 1fr)
+        auto;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-height: 68px;
+
+    padding:
+        10px
+        12px;
+
+    background: #ffffff;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 9px;
+
+    cursor: grab;
+
+    transition:
+        opacity 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease;
+
+}
+
+
+.toledo-routes-route-item:active {
+
+    cursor: grabbing;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| DRAG & DROP
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-route-item.is-dragging {
+
+    opacity: 0.45;
+
+}
+
+
+.toledo-routes-route-item.drag-over {
+
+    border-color: var(--tr-primary);
+
+    transform:
+        translateY(2px);
+
+}
+
+
+.toledo-routes-route-handle {
+
+    font-size: 20px;
+
+    text-align: center;
+
+    cursor: grab;
+
+    user-select: none;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| NÚMERO DE POSICIÓN
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-route-number {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 30px;
+
+    height: 30px;
+
+    color: #ffffff;
+
+    background: var(--tr-primary);
+
+    border-radius: 50%;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| INFORMACIÓN DE CADA LUGAR EN LA RUTA
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-route-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+    min-width: 0;
+
+}
+
+
+.toledo-routes-route-info strong {
+
+    overflow: hidden;
+
+    font-size: 15px;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+.toledo-routes-route-info span {
+
+    color: var(--tr-text-soft);
+
+    font-size: 13px;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| ACCIONES DE CADA LUGAR
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-route-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 5px;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| SUBIR / BAJAR
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-route-move {
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 34px;
+
+    height: 34px;
+
+    padding: 0;
+
+    color: var(--tr-text);
+
+    background: #ffffff;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 7px;
+
+    font-size: 18px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+}
+
+
+.toledo-routes-route-move:hover:not(:disabled) {
+
+    background: #f5f5f5;
+
+    border-color: #777777;
+
+}
+
+
+.toledo-routes-route-move:disabled {
+
+    opacity: 0.3;
+
+    cursor: not-allowed;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| ELIMINAR
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-route-remove {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 36px;
+
+    height: 36px;
+
+    padding: 0;
+
+    color: var(--tr-text);
+
+    background: transparent;
+
+    border: none;
+
+    border-radius: 50%;
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+}
+
+
+.toledo-routes-route-remove:hover {
+
+    background: #eeeeee;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| RESUMEN DE LUGARES SELECCIONADOS
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-route-summary {
+
+    margin-top: 16px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    text-align: right;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| TRANSPORTE
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-transport {
+
+    margin-top: 28px;
+
+    padding-top: 24px;
+
+    border-top: 1px solid #eeeeee;
+
+}
+
+
+.toledo-routes-transport h4 {
+
+    margin: 0 0 14px;
+
+    font-size: 17px;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| OPCIONES DE TRANSPORTE
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-transport-options {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+}
+
+
+.toledo-routes-transport-option {
+
+    position: relative;
+
+    cursor: pointer;
+
+}
+
+
+.toledo-routes-transport-option input {
+
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+}
+
+
+.toledo-routes-transport-option span {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 52px;
+
+    padding: 10px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--tr-border-dark);
+
+    border-radius: var(--tr-radius-small);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+
+}
+
+
+.toledo-routes-transport-option:hover span {
+
+    border-color: #777777;
+
+}
+
+
+.toledo-routes-transport-option
+input:checked + span {
+
+    color: #ffffff;
+
+    background: var(--tr-primary);
+
+    border-color: var(--tr-primary);
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| CALCULAR RUTA
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-calculate-route {
+
+    display: block;
+
+    width: 100%;
+
+    min-height: 54px;
+
+    margin-top: 20px;
+
+    padding:
+        12px
+        20px;
+
+    color: #ffffff;
+
+    background: var(--tr-primary);
+
+    border: 1px solid var(--tr-primary);
+
+    border-radius: var(--tr-radius-small);
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        opacity 0.15s ease;
+
+}
+
+
+.toledo-routes-calculate-route:hover:not(:disabled) {
+
+    opacity: 0.88;
+
+}
+
+
+.toledo-routes-calculate-route:disabled {
+
+    opacity: 0.4;
+
+    cursor: not-allowed;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| ESTADO DE LA RUTA
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-route-status {
+
+    min-height: 22px;
+
+    margin-top: 12px;
+
+    color: var(--tr-text-soft);
+
+    font-size: 14px;
+
+    text-align: center;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| RESULTADOS
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-route-results {
+
+    margin-top: 28px;
+
+    padding-top: 28px;
+
+    border-top: 1px solid #eeeeee;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| TÍTULOS RESULTADOS
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-route-total h4,
+.toledo-routes-route-breakdown h4 {
+
+    margin:
+        0
+        0
+        16px;
+
+    font-size: 18px;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| DISTANCIA Y TIEMPO
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-route-stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 14px;
+
+}
+
+
+.toledo-routes-route-stat {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    padding: 18px;
+
+    background: var(--tr-background-soft);
+
+    border: 1px solid var(--tr-border);
+
+    border-radius: 10px;
+
+}
+
+
+.toledo-routes-route-stat-label {
+
+    color: var(--tr-text-soft);
+
+    font-size: 13px;
+
+}
+
+
+.toledo-routes-route-stat-value {
+
+    font-size: 25px;
+
+    line-height: 1.2;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| DESGLOSE DE LA RUTA
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-route-breakdown {
+
+    margin-top: 28px;
+
+}
+
+
+.toledo-routes-route-legs {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| TRAMO
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-leg {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 16px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--tr-border);
+
+    border-radius: 10px;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| CABECERA DE TRAMO
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-leg-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    min-width: 0;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| NÚMERO DEL TRAMO
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-leg-number {
+
+    display: flex;
+
+    flex: 0 0 auto;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 34px;
+
+    height: 34px;
+
+    color: #ffffff;
+
+    background: var(--tr-primary);
+
+    border-radius: 50%;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| ORIGEN Y DESTINO
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-leg-route {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    min-width: 0;
+
+}
+
+
+.toledo-routes-leg-route strong {
+
+    font-size: 14px;
+
+}
+
+
+.toledo-routes-leg-arrow {
+
+    color: var(--tr-text-soft);
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| ESTADÍSTICAS DEL TRAMO
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-leg-stats {
+
+    display: flex;
+
+    flex: 0 0 auto;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+
+.toledo-routes-leg-stats span {
+
+    padding:
+        6px
+        10px;
+
+    background: #f2f2f2;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| FOCO Y ACCESIBILIDAD
+|--------------------------------------------------------------------------
+*/
+
+.toledo-routes-button:focus-visible,
+.toledo-routes-select:focus-visible,
+.toledo-routes-clear-route:focus-visible,
+.toledo-routes-calculate-route:focus-visible,
+.toledo-routes-route-remove:focus-visible,
+.toledo-routes-route-move:focus-visible {
+
+    outline:
+        3px solid currentColor;
+
+    outline-offset:
+        2px;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| ESCRITORIO GRANDE
+|--------------------------------------------------------------------------
+*/
+
+@media (min-width: 1200px) {
+
+    .toledo-routes-app {
+
+        max-width: 1440px;
+
+    }
+
+
+    .toledo-routes-main {
+
+        grid-template-columns:
+            minmax(0, 2.2fr)
+            minmax(340px, 0.8fr);
+
+    }
+
+
+    .toledo-routes-map,
+    .toledo-routes-place-panel {
+
+        height: 680px;
+
+    }
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| TABLET HORIZONTAL
+|--------------------------------------------------------------------------
+*/
+
+@media
+(
+    min-width: 769px
+)
+and
+(
+    max-width: 1100px
+) {
+
+    .toledo-routes-main {
+
+        grid-template-columns:
+            minmax(0, 1.55fr)
+            minmax(300px, 1fr);
+
+        gap: 16px;
+
+    }
+
+
+    .toledo-routes-map,
+    .toledo-routes-place-panel {
+
+        height: 590px;
+
+    }
+
+
+    .toledo-routes-place-image-container {
+
+        height: 210px;
+
+    }
+
+
+    .toledo-routes-place-name {
+
+        font-size: 23px;
+
+    }
+
+
+    .toledo-routes-filters {
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .toledo-routes-results-count {
+
+        flex-basis: 100%;
+
+        padding-bottom: 0;
+
+    }
+
+}
+
+
+/*
+|----------------------------------------
