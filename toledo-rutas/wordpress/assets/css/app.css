@@ -1,0 +1,156 @@
+#tr-app {
+    display: grid;
+    grid-template-columns:
+        minmax(190px, 230px)
+        minmax(0, 1fr)
+        minmax(240px, 280px);
+    gap: 12px;
+    width: 100%;
+    max-width: none;
+    min-height: 650px;
+    margin: 20px 0;
+    color: #e5e7eb;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+#tr-app *,
+#tr-app *::before,
+#tr-app *::after {
+    box-sizing: border-box;
+}
+
+
+#tr-app .tr-filtros,
+#tr-app .tr-ficha {
+    padding: 16px;
+    background: #111827;
+    border: 1px solid #334155;
+    border-radius: 10px;
+}
+
+#tr-app h2 {
+    margin-top: 0;
+    font-size: 22px;
+}
+
+#tr-app h3 {
+    margin-top: 24px;
+    font-size: 17px;
+}
+
+#tr-app label {
+    display: block;
+    margin: 16px 0 6px;
+    font-weight: bold;
+}
+
+#tr-app select,
+#tr-app button {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+#tr-app select {
+    color: #f9fafb;
+    background: #1f2937;
+    border: 1px solid #475569;
+}
+
+#tr-app button {
+    margin-top: 16px;
+    color: white;
+    background: #2563eb;
+    border: 0;
+    cursor: pointer;
+}
+
+#tr-app button:hover {
+    background: #1d4ed8;
+}
+
+#tr-app .tr-mapa-contenedor {
+    min-width: 0;
+    min-height: 650px;
+}
+
+#tr-mapa {
+    width: 100%;
+    height: 650px;
+    border-radius: 10px;
+    background: #e5e7eb;
+    z-index: 1;
+}
+
+#tr-app .tr-lugar {
+    display: block;
+    margin-top: 8px;
+    padding: 10px;
+    color: #e5e7eb;
+    background: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+}
+
+#tr-app .tr-lugar:hover {
+    background: #334155;
+}
+
+#tr-app .tr-ficha p {
+    line-height: 1.6;
+}
+
+#tr-app .tr-tipo {
+    display: inline-block;
+    padding: 4px 8px;
+    background: #1d4ed8;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+@media (max-width: 1000px) {
+    #tr-app {
+        grid-template-columns: 200px minmax(0, 1fr);
+    }
+
+    #tr-app .tr-ficha {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 650px) {
+    #tr-app {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #tr-app .tr-mapa-contenedor {
+        grid-row: 1;
+    }
+
+    #tr-mapa {
+        height: 430px;
+    }
+
+    #tr-app .tr-ficha {
+        grid-column: auto;
+    }
+}
+
+/* Evita que el contenido de la aplicación se desborde */
+#tr-app .tr-filtros,
+#tr-app .tr-ficha,
+#tr-app .tr-mapa-contenedor {
+    min-width: 0;
+}
+
+/* Intenta aprovechar todo el ancho disponible del contenido */
+.entry-content:has(#tr-app),
+.wp-block-post-content:has(#tr-app) {
+    width: 100%;
+    max-width: none;
+}
