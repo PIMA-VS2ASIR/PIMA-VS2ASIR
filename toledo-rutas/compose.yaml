@@ -9,7 +9,7 @@ services:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_NAME: toledorutas
       WORDPRESS_DB_USER: rutasuser
-      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD no definida}
     volumes:
       - wordpress_data:/var/www/html
       - ./wordpress:/var/www/html/wp-content/plugins/toledo-rutas
@@ -26,8 +26,8 @@ services:
     environment:
       MARIADB_DATABASE: toledorutas
       MARIADB_USER: rutasuser
-      MARIADB_PASSWORD: ${DB_PASSWORD}
-      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MARIADB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD no definida}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?DB_ROOT_PASSWORD no definida}
     volumes:
       - db_data:/var/lib/mysql
     healthcheck:
@@ -39,15 +39,33 @@ services:
     networks:
       - rutas_net
 
-  osrm:
+  osrm-car:
     image: ghcr.io/project-osrm/osrm-backend:latest
-    container_name: toledo-rutas-osrm
+    container_name: toledo-rutas-osrm-car
     restart: unless-stopped
-    ports:
-      - "5000:5000"
     volumes:
       - ./osrm-data:/data
     command: osrm-routed --algorithm mld /data/castilla-la-mancha-latest.osrm
+    networks:
+      - rutas_net
+
+  osrm-bike:
+    image: ghcr.io/project-osrm/osrm-backend:latest
+    container_name: toledo-rutas-osrm-bike
+    restart: unless-stopped
+    volumes:
+      - ./osrm-data:/data
+    command: osrm-routed --algorithm mld /data/castilla-la-mancha-bike.osrm
+    networks:
+      - rutas_net
+
+  osrm-foot:
+    image: ghcr.io/project-osrm/osrm-backend:latest
+    container_name: toledo-rutas-osrm-foot
+    restart: unless-stopped
+    volumes:
+      - ./osrm-data:/data
+    command: osrm-routed --algorithm mld /data/castilla-la-mancha-foot.osrm
     networks:
       - rutas_net
 
