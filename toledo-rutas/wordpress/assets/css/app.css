@@ -1,0 +1,380 @@
+#tr-app {
+    display: grid;
+    grid-template-columns:
+        minmax(190px, 230px)
+        minmax(0, 1fr)
+        minmax(240px, 280px);
+    gap: 12px;
+    width: 100%;
+    max-width: none;
+    min-height: 650px;
+    margin: 20px 0;
+    color: #e5e7eb;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+#tr-app *,
+#tr-app *::before,
+#tr-app *::after {
+    box-sizing: border-box;
+}
+
+
+#tr-app .tr-filtros,
+#tr-app .tr-ficha {
+    padding: 16px;
+    background: #111827;
+    border: 1px solid #334155;
+    border-radius: 10px;
+}
+
+#tr-app h2 {
+    margin-top: 0;
+    font-size: 22px;
+}
+
+#tr-app h3 {
+    margin-top: 24px;
+    font-size: 17px;
+}
+
+#tr-app label {
+    display: block;
+    margin: 16px 0 6px;
+    font-weight: bold;
+}
+
+#tr-app select,
+#tr-app button {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+#tr-app select {
+    color: #f9fafb;
+    background: #1f2937;
+    border: 1px solid #475569;
+}
+
+#tr-app button {
+    margin-top: 16px;
+    color: white;
+    background: #2563eb;
+    border: 0;
+    cursor: pointer;
+}
+
+#tr-app button:hover {
+    background: #1d4ed8;
+}
+
+#tr-app .tr-mapa-contenedor {
+    min-width: 0;
+    min-height: 650px;
+}
+
+#tr-mapa {
+    width: 100%;
+    height: 650px;
+    border-radius: 10px;
+    background: #e5e7eb;
+    z-index: 1;
+}
+
+#tr-app .tr-lugar {
+    display: block;
+    margin-top: 8px;
+    padding: 10px;
+    color: #e5e7eb;
+    background: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+}
+
+#tr-app .tr-lugar:hover {
+    background: #334155;
+}
+
+#tr-app .tr-ficha p {
+    line-height: 1.6;
+}
+
+#tr-app .tr-tipo {
+    display: inline-block;
+    padding: 4px 8px;
+    background: #1d4ed8;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+/* Módulo de Planificador de Rutas */
+.tr-modulo-ruta {
+    margin-bottom: 16px;
+}
+
+.tr-modulo-ruta h2 {
+    font-size: 18px;
+    margin-bottom: 14px;
+    color: #38bdf8;
+}
+
+.tr-grupo-campo {
+    margin-bottom: 10px;
+}
+
+.tr-grupo-campo label {
+    margin: 8px 0 4px !important;
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+.tr-fila-invertir {
+    display: flex;
+    justify-content: flex-end;
+    margin: -4px 0 6px;
+}
+
+#tr-app button.tr-btn-secundario {
+    margin-top: 0;
+    width: auto;
+    padding: 4px 10px;
+    font-size: 12px;
+    background: #334155;
+    color: #cbd5e1;
+    border: 1px solid #475569;
+    border-radius: 4px;
+}
+
+#tr-app button.tr-btn-secundario:hover {
+    background: #475569;
+    color: #ffffff;
+}
+
+.tr-acciones-ruta {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+#tr-app button.tr-btn-principal {
+    margin-top: 0;
+    background: #0284c7;
+    font-weight: bold;
+}
+
+#tr-app button.tr-btn-principal:hover {
+    background: #0369a1;
+}
+
+#tr-app button.tr-btn-peligro {
+    margin-top: 0;
+    width: auto;
+    background: #475569;
+    color: #fca5a5;
+    padding: 10px 14px;
+}
+
+#tr-app button.tr-btn-peligro:hover {
+    background: #dc2626;
+    color: #ffffff;
+}
+
+.tr-ruta-info {
+    margin-top: 12px;
+    padding: 10px 12px;
+    background: #1e293b;
+    border-left: 3px solid #38bdf8;
+    border-radius: 4px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #cbd5e1;
+}
+
+.tr-ruta-info.tr-alerta {
+    border-left-color: #f59e0b;
+    color: #fef3c7;
+    background: #451a03;
+}
+
+.tr-separador {
+    border: 0;
+    border-top: 1px solid #334155;
+    margin: 20px 0 16px;
+}
+
+/* Botones dentro de la ficha de detalle */
+.tr-acciones-lugar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+#tr-app button.tr-btn-origen {
+    margin-top: 0;
+    background: #059669;
+    font-size: 13px;
+    padding: 8px;
+    font-weight: 600;
+}
+
+#tr-app button.tr-btn-origen:hover {
+    background: #047857;
+}
+
+#tr-app button.tr-btn-destino {
+    margin-top: 0;
+    background: #dc2626;
+    font-size: 13px;
+    padding: 8px;
+    font-weight: 600;
+}
+
+#tr-app button.tr-btn-destino:hover {
+    background: #b91c1c;
+}
+
+/* Popup de clic en el mapa */
+.tr-popup-click {
+    font-family: Arial, sans-serif;
+    color: #111827;
+    text-align: center;
+    padding: 4px 2px;
+}
+
+.tr-popup-click strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.tr-popup-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tr-popup-btns button {
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.tr-btn-pop-origen {
+    background-color: #059669;
+}
+.tr-btn-pop-origen:hover {
+    background-color: #047857;
+}
+
+.tr-btn-pop-destino {
+    background-color: #dc2626;
+}
+.tr-btn-pop-destino:hover {
+    background-color: #b91c1c;
+}
+
+/* Marcadores personalizados para origen y destino en el mapa */
+.tr-pin-ruta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    border: 2px solid #ffffff;
+}
+
+.tr-pin-ruta span {
+    transform: rotate(45deg);
+}
+
+.tr-pin-origen {
+    background: #10b981;
+}
+
+.tr-pin-destino {
+    background: #ef4444;
+}
+
+/* Integración del panel de indicaciones OSRM con el tema oscuro */
+.leaflet-routing-container {
+    background-color: #111827 !important;
+    color: #e5e7eb !important;
+    border: 1px solid #334155 !important;
+    border-radius: 8px !important;
+    max-height: 300px;
+    overflow-y: auto;
+    font-size: 13px;
+}
+
+.leaflet-routing-alt {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.leaflet-routing-alt table tr:hover {
+    background-color: #1f2937 !important;
+}
+
+.leaflet-routing-icon {
+    filter: invert(1); /* Invierte los iconos de giro para que sean visibles sobre fondo oscuro */
+}
+
+@media (max-width: 1000px) {
+    #tr-app {
+        grid-template-columns: 200px minmax(0, 1fr);
+    }
+
+    #tr-app .tr-ficha {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 650px) {
+    #tr-app {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #tr-app .tr-mapa-contenedor {
+        grid-row: 1;
+    }
+
+    #tr-mapa {
+        height: 430px;
+    }
+
+    #tr-app .tr-ficha {
+        grid-column: auto;
+    }
+}
+
+/* Evita que el contenido de la aplicación se desborde */
+#tr-app .tr-filtros,
+#tr-app .tr-ficha,
+#tr-app .tr-mapa-contenedor {
+    min-width: 0;
+}
+
+/* Intenta aprovechar todo el ancho disponible del contenido */
+.entry-content:has(#tr-app),
+.wp-block-post-content:has(#tr-app) {
+    width: 100%;
+    max-width: none;
+}
