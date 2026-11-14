@@ -40,7 +40,7 @@ services:
       - rutas_net
 
   osrm-car:
-    image: ghcr.io/project-osrm/osrm-backend:latest
+    image: ghcr.io/project-osrm/osrm-backend:v26.11.0-debian
     container_name: toledo-rutas-osrm-car
     restart: unless-stopped
     volumes:
@@ -50,7 +50,7 @@ services:
       - rutas_net
 
   osrm-bike:
-    image: ghcr.io/project-osrm/osrm-backend:latest
+    image: ghcr.io/project-osrm/osrm-backend:v26.11.0-debian
     container_name: toledo-rutas-osrm-bike
     restart: unless-stopped
     volumes:
@@ -60,7 +60,7 @@ services:
       - rutas_net
 
   osrm-foot:
-    image: ghcr.io/project-osrm/osrm-backend:latest
+    image: ghcr.io/project-osrm/osrm-backend:v26.11.0-debian
     container_name: toledo-rutas-osrm-foot
     restart: unless-stopped
     volumes:
