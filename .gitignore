@@ -1,0 +1,34 @@
+# =====================================
+# PIMA-VS2ASIR - Gitignore general
+# =====================================
+
+# Variables de entorno y credenciales
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Archivos temporales
+*.tmp
+*.log
+*.bak
+*.swp
+
+# Dependencias
+node_modules/
+
+# Configuraciones locales de editores
+.idea/
+
+# Copias de seguridad
+backups/
+
+# Entornos virtuales de Python
+.venv/
+__pycache__/
