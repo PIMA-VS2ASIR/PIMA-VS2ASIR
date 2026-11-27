@@ -1,4 +1,4 @@
-param([Parameter(Mandatory=$true)][ValidateSet('Configurar','Subir')][string]$Modo)
+param([Parameter(Mandatory=$true)][ValidateSet('Configurar','Subir','Actualizar')][string]$Modo)
 $ErrorActionPreference = 'Stop'
 Set-Location -LiteralPath $PSScriptRoot
 
@@ -60,6 +60,35 @@ try {
     $rama = Invoke-RepoGit symbolic-ref --short HEAD
     $esperada = Invoke-RepoGit config --local --get equipo.rama
     if ($rama -ne $esperada -or $rama -notmatch '^equipo/[a-z0-9][a-z0-9-]{0,38}$') { throw 'No estas en tu rama configurada. No se subira nada.' }
+    if ($Modo -eq 'Actualizar') {
+        if (@(Invoke-RepoGit status --porcelain).Count -ne 0) {
+            throw 'Hay cambios locales. Guarda o sube tus cambios antes de actualizar.'
+        }
+        $null = Invoke-RepoGit var GIT_AUTHOR_IDENT
+        $null = Invoke-RepoGit var GIT_COMMITTER_IDENT
+        Invoke-RepoGit fetch --prune origin
+        if (Existe-Ref "refs/remotes/origin/$rama") {
+            Invoke-RepoGit merge --ff-only "origin/$rama"
+        }
+        if (-not (Existe-Ref 'refs/remotes/origin/main')) {
+            throw 'No existe origin/main.'
+        }
+        Write-Host 'Integrando las novedades de main en tu rama...'
+        & git merge --no-edit origin/main
+        if ($LASTEXITCODE -ne 0) {
+            $mergeHead = Invoke-RepoGit rev-parse --git-path MERGE_HEAD
+            if (Test-Path -LiteralPath $mergeHead) {
+                Invoke-RepoGit merge --abort
+                throw 'Conflicto al integrar main. Se ha cancelado la fusion; pide ayuda al responsable.'
+            }
+            throw 'No se pudo integrar main. Revisa la salida anterior.'
+        }
+        Invoke-RepoGit lfs pull origin
+        Invoke-RepoGit lfs fsck --pointers HEAD
+        Write-Host "Rama actualizada: $rama. No se ha realizado ningun push." -ForegroundColor Green
+        exit 0
+    }
+
     $null = Invoke-RepoGit var GIT_AUTHOR_IDENT
     $null = Invoke-RepoGit var GIT_COMMITTER_IDENT
     Invoke-RepoGit status --short
